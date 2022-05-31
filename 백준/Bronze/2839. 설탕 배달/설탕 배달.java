@@ -7,17 +7,28 @@ public class Main {
 
 		int n = sc.nextInt();
 
-		if (n == 4 || n == 7) {
+		int five = (n / 5);
+		int re = (n % 5);
+		int three = 0;
+
+		if (re % 3 == 0) {
+			three = re / 3;
+			
+		} else {
+			while (five != 0) {
+				five -= 1;
+				re = n - (5 * five);
+				if (re % 3 == 0) {
+					three = re / 3;
+					break;
+				}
+			}
+		}
+
+		if (five == 0 && three == 0) {
 			System.out.println(-1);
-			
-		} else if (n % 5 == 0) {
-			System.out.println(n / 5);
-			
-		} else if (n % 5 == 1 || n % 5 == 3) {
-			System.out.println((n / 5) + 1);
-			
-		} else if (n % 5 == 2 || n % 5 == 4) {
-			System.out.println((n / 5) + 2);
+		} else {
+			System.out.println(five + three);
 		}
 
 	}
